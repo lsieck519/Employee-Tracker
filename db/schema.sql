@@ -3,22 +3,28 @@ CREATE DATABASE workplace_db;
 
 USE workplace_db;
 
-CREATE TABLE depts (
+CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  dept_name VARCHAR(30) NOT NULL
+  name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE employees (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  full_name VARCHAR(30) NOT NULL,
-  role VARCHAR(30) NOT NULL,
-  dept_name VARCHAR(30) NOT NULL,
-  salary INT NOT NULL,
-  manager VARCHAR(30)
-);
-
-CREATE TABLE roles (
+CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(30) NOT NULL,
-    department VARCHAR(30) NOT NULL
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL, 
+    department_id INT NOT NULL,
+    FOREIGN KEY (department_id)
+    REFERENCES department(id)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE employee (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  role_id INT NOT NULL,
+  manager_id INT,
+  FOREIGN KEY (role_id)
+  REFERENCES role(id)
+  ON DELETE SET NULL
 );
