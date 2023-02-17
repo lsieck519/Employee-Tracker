@@ -1,0 +1,24 @@
+DROP DATABASE IF EXISTS workplace_db;
+CREATE DATABASE workplace_db;
+
+USE workplace_db;
+
+CREATE TABLE depts (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  dept_name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE employees (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(30) NOT NULL,
+  role VARCHAR(30) NOT NULL,
+  dept_name VARCHAR(30) NOT NULL,
+  salary INT NOT NULL,
+  manager VARCHAR(30)
+);
+
+CREATE TABLE roles (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(30) NOT NULL,
+    department VARCHAR(30) NOT NULL
+);
