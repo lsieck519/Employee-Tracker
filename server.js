@@ -23,9 +23,9 @@ const db = mysql.createConnection(
 );
 
 
-let Depts =[]
-let Roles = []
-let Employees = []
+// let Depts =[]
+// let Roles = []
+// let Employees = []
 
 const promptUser = async () => {
     const data = await inquirer
@@ -61,29 +61,34 @@ const promptUser = async () => {
 
     if (data.options === "View All Depts") {
         // show dept table including dept names and ids
-        db.query('SELECT * FROM depts', function (err, results) {
+        db.query('SELECT * FROM department', function (err, results) {
           console.log(results);
-        });
+        })
+        promptUser();
 
         ///
       } else if (data.options === "View All Roles") {
         // show roles table including job title, role id, dept, salary
-        db.query('SELECT * FROM roles', function (err, results) {
+        db.query('SELECT * FROM role', function (err, results) {
           console.log(results);
-        });
+        })
+        promptUser();
 
       } else if (data.options === "View All Employees") {
         //show employees table including employee ids, first names, last names, job titles, departments, salaries, and managers
-        db.query('SELECT * FROM employees', function (err, results) {
+        db.query('SELECT * FROM employee', function (err, results) {
           console.log(results);
-        });
+        })
+        promptUser();
 
       } else if (data.options === "Add a Dept") {
         Depts.push(data.dept)
         console.log(Depts)
+
       } else if (data.options === "Add a Role") {
         Roles.push(data.role)
         console.log(Roles)
+
       } else if (data.options === "Add an Employee") {
         Employees.push(data.employee)
         console.log(Employees)
