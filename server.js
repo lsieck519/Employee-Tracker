@@ -2,6 +2,7 @@ const inquirer = require("inquirer")
 const fs = require('fs')
 const mysql = require('mysql2');
 const express = require('express');
+const cTable = require('console.table');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,7 +17,7 @@ const db = mysql.createConnection(
   {
     host: '127.0.0.1',
     user: 'root',
-    password: 'pw',
+    password: 'mAl1ens519!',
     database: 'workplace_db'
   },
   console.log(`Connected to the workplace_db database.`)
@@ -62,24 +63,20 @@ const promptUser = async () => {
     if (data.options === "View All Depts") {
         // show dept table including dept names and ids
         db.query('SELECT * FROM department', function (err, results) {
-          console.log(results);
-        })
-        promptUser();
-
+          console.table(results);
+        });
         ///
       } else if (data.options === "View All Roles") {
         // show roles table including job title, role id, dept, salary
         db.query('SELECT * FROM role', function (err, results) {
-          console.log(results);
-        })
-        promptUser();
+          console.table(results);
+        });
 
       } else if (data.options === "View All Employees") {
         //show employees table including employee ids, first names, last names, job titles, departments, salaries, and managers
         db.query('SELECT * FROM employee', function (err, results) {
-          console.log(results);
-        })
-        promptUser();
+          console.table(results);
+        });
 
       } else if (data.options === "Add a Dept") {
         Depts.push(data.dept)
