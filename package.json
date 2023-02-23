@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/lsieck519/Employee-Tracker#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "console.table": "^0.10.0",
     "express": "^4.18.2",
     "inquirer": "^8.2.4",
