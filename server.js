@@ -34,7 +34,7 @@ const promptUser = async () => {
         type: 'list',
         name: 'options',
         message: 'Select an action:',
-        choices: ['View All Depts','View All Roles','View All Employees', 'Add a Dept', 'Add a Role', 'Add an Employee', 'Update an Employee Role'],
+        choices: ['View All Depts','View All Roles','View All Employees', 'Add a Dept', 'Add a Role', 'Add an Employee', 'Update an Employee'],
       },
       // {
       //   type: 'input',
@@ -95,10 +95,8 @@ const promptUser = async () => {
             if (err) throw err;
             console.log(`${response.deptName} has been added to the department table!`);
             promptUser();
-            }
-        )
+            })
        });
-
       } else if (data.options === "Add a Role") {
         inquirer.prompt( [
           {
@@ -125,12 +123,9 @@ const promptUser = async () => {
           if (err) throw err;
           console.log(`The ${response.roleTitle} role has been added to the role table with a salary of $${response.roleSalary} and department ID of ${response.roleDeptID}!`);
           promptUser();
-          }
-        )
-      })
-    }
-        
-    else if (data.options === "Add an Employee") {
+          })
+      });
+    } else if (data.options === "Add an Employee") {
         inquirer.prompt( [
           {
             type: 'input',
@@ -163,6 +158,44 @@ const promptUser = async () => {
           promptUser(); 
       })
   })
+} else if (data.options === "Update an Employee") {
+  inquirer.prompt( [
+    {
+      type: 'input',
+      name: 'empID',
+      message: 'Please Enter the ID of the Employee You Wish to Update',
+    },
+    {
+      type: 'input',
+      name: 'firstName',
+      message: 'Please Enter Employees First Name:',
+    },
+    {
+      type: 'input',
+      name: 'lastName',
+      message: 'Please Enter Employees Last Name:',
+    },
+    {
+      type: 'input',
+      name: 'roleID',
+      message: 'Please Enter Employees Role ID:',
+    },
+    {
+      type: 'input',
+      name: 'managerID',
+      message: 'Please Enter Employee Managers ID:',
+    }
+  ])
+  .then(response => {
+  db.query(
+  'UPDATE employee (first_name, last_name, role_id, manager_id) SET (?, ?, ?, ?) WHERE employee.id = ?',
+  [response.firstName, response.lastName, response.roleID, response.managerID, response.empID],
+  function (err, res) {
+    if (err) throw err;
+    console.log(`${response.firstName} ${response.lastName}'s info has been added updated!`);
+    promptUser(); 
+})
+})
 }
 }
 
