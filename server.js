@@ -26,6 +26,7 @@ const db = mysql.createConnection(
 );
 
 
+
 const promptUser = async () => {
     const data = await inquirer
     
@@ -199,12 +200,15 @@ const promptUser = async () => {
 }
 }
 
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// }); 
+
 promptUser()
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+
 
 
 
