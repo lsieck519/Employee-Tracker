@@ -27,4 +27,4 @@ VALUES ('Beth', 'Sanderson', 3, 9),
        ('Maggie', 'Nile', 8, null),
        ('Josephine', 'Wall', 9, null),
        ('Xavier', 'Willis', 6, 3),
-       ('Julia', 'Stephano', 10, null)
+       ('Julia', 'Stephano', 10, null);
