@@ -35,13 +35,12 @@ GIVEN a command-line application that accepts user input
     - THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
 ```
-## Preview
+## Demo
+[Click here to view demo](https://drive.google.com/file/d/1jn4Z8pgjKuGMVVoHGqs-LfamOe_Ig-_O/view?usp=sharing) 
 
 ## Usage
 
 Use this to view and manage the departments, roles, and employees in a company
-
-## Installation
 
 ## Questions 
 
